@@ -1,0 +1,35 @@
+﻿@model StageManager.Models.User
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <th>Login</th>
+        </tr>
+        <tr>
+            <td>Username: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Username)
+            </td>
+        </tr>
+        <tr>
+            <td>Password: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Password)
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}
+
+<p class="text-danger">
+    @ViewBag.errorLogin
+</p>

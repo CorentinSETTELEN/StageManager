@@ -1,0 +1,5 @@
+<connectionStrings>
+    <add name="StageManagerContext" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=StageManager;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+  </connectionStrings>
+
+Present aussi dans web.config

@@ -1,0 +1,24 @@
+﻿@using StageManager.Models
+@model StageManager.Models.Stagiaire
+
+@{
+    ViewBag.Title = "AllNotesFromOne";
+}
+
+<h1>Resume des notes </h1>
+
+
+
+<table border="2px">
+    @foreach (NoteStagiaire noteFromStagiaire in Model.ListNoteStagiaire)
+    {
+        <tr>
+            <td>Contenu  : @noteFromStagiaire.Content   </td>
+            <td>Validé : @noteFromStagiaire.Valid  </td>
+            <td>Commentaire du maitre de stage : @noteFromStagiaire.Comment</td>
+            <td>Date : @noteFromStagiaire.Date</td>
+            <td>Note du maitre de stage : @noteFromStagiaire.Note</td>
+        </tr>
+    }
+
+</table>

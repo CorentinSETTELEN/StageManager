@@ -1,0 +1,18 @@
+﻿@model IEnumerable<StageManager.Models.Stagiaire>
+@{
+    ViewBag.Title = "ManageStagiaires";
+}
+
+<h2>ManageStagiaires</h2>
+
+
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.DisplayFor(modelItem => item.User.FullName)
+            @Html.ActionLink("Gerer ce stagiaire", "EditStagiaire", new { id = item.ID })
+        </tr>
+    }
+
+</table>

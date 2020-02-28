@@ -1,0 +1,62 @@
+﻿@using StageManager.Models
+@model StageManager.Models.User
+
+@{
+    ViewBag.Title = "CreateUser";
+}
+
+<h2>Ajouter un nouvel utilisateur</h2>
+
+@using (Html.BeginForm("CreateUser", "Backoffice", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <th>Create new User</th>
+        </tr>
+        <tr>
+            <td>Username: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Username, htmlAttributes: new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+        <tr>
+            <td>Password: </td>
+            <td>
+                @Html.TextBoxFor(m => m.Password, htmlAttributes: new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>First Name: </td>
+            <td>
+                @Html.TextBoxFor(m => m.FirstName, htmlAttributes: new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>Last Name: </td>
+            <td>
+                @Html.TextBoxFor(m => m.LastName, htmlAttributes: new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>Role: </td>
+            <td>
+                @Html.EnumDropDownListFor(model => model.Role, htmlAttributes: new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr></tr>
+        <tr>
+            <td>
+                <input type="submit" value="Create User" class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
+}
+
+
+<p class="text-danger">
+    @ViewBag.errorRegister
+</p>
+
+

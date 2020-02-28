@@ -1,0 +1,89 @@
+﻿@using StageManager.Models
+@model StageManager.Models.Stagiaire
+
+@{
+    ViewBag.Title = "EditStagiaire";
+}
+
+<h2>Gérer un stagiaire</h2>
+
+@using (Html.BeginForm("EditStagiaire", "Backoffice", FormMethod.Post))
+{
+    <div>
+        <div class="form-group">
+            Nom du stage :
+
+            @Html.EditorFor(model => model.StageName, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+        <br />
+        Date de depart :
+        @Html.EditorFor(model => model.DateStart, new {
+                  @class = "form-control",
+                  type = "date" }
+              )
+
+        <br />
+
+        Date de fin :
+
+        @Html.EditorFor(model => model.DateEnd, new {
+                 @class = "form-control",
+                 type = "date" }
+             )
+
+        <br />
+
+
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+
+<div>
+    Dates de formations :
+    @{
+        int i = 0;
+    }
+    @foreach (DateStage dateFormation in Model.FormationDates)
+    {
+        <li>@dateFormation.Date</li>
+
+        @Html.ActionLink("Supprimer cette date", "DeleteDateInFormation", new { id = Model.ID, idDate = i })
+        i++;
+    }
+</div>
+
+<div>
+    Dates en entreprises :
+    @{
+        int j = 0;
+    }
+    @foreach (DateStage dateEntreprise in Model.EntrepriseDates)
+    {
+        <li>@dateEntreprise.Date</li>
+
+        @Html.ActionLink("Supprimer cette date", "DeleteDateInEntreprise", new { id = Model.ID, idDate = j })
+        j++;
+    }
+</div>
+
+<div>
+    Notes :
+    @{
+        int k = 0;
+    }
+    @foreach (NoteStagiaire noteFromStagiaire in Model.ListNoteStagiaire)
+    {
+        <li>@noteFromStagiaire.Content</li>
+        @Html.ActionLink("Evaluer cette note", "ReadNote", new { id = noteFromStagiaire.ID })
+
+
+        k++;
+    }
+
+    @Html.ActionLink("Generer pdf", "CreatePdf")
+</div>

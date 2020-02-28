@@ -1,0 +1,37 @@
+﻿@using StageManager.Models
+@model StageManager.Models.Stagiaire
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Planning</h2>
+
+
+<div>
+    Dates en formation :
+    @{
+        int i = 0;
+    }
+    @foreach (DateStage dateFormation in Model.EntrepriseDates)
+    {
+        
+        <div class="p-3 mb-2 bg-success text-white">@dateFormation.Date</div>
+        @Html.ActionLink("Noter cette journéee", "AddNote", new { Stagiaire = Model.ID, idDate = i })
+        
+
+        i++;
+    }
+</div><div>
+    Dates en entreprises :
+    @{
+        int j = 0;
+    }
+    @foreach (DateStage dateEntreprise in Model.EntrepriseDates)
+    {
+        <div class="p-3 mb-2 bg-danger text-white">@dateEntreprise.Date</div>
+        @Html.ActionLink("Noter cette journéee", "AddNote", new { Stagiaire = Model.ID, idDate = j })
+
+        j++;
+    }
+</div>

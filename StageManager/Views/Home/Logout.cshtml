@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Logout";
+}
+
+<h2>Logout</h2>
+
+<h3>Logging out ...</h3>
+
+
+@{
+    Session.Clear();
+    Response.Redirect("Index");
+}
+
